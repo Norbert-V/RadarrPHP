@@ -1,5 +1,5 @@
 {
-    "name": "norbert-v/radarr-php",
+    "name": "norbert-v/radarrphp",
     "description": "PHP library to connect with the Radarr API",
     "type": "library",
     "autoload": {
