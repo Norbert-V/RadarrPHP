@@ -5,6 +5,7 @@ namespace RadarrPHP\Core;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Response;
+use RadarrPHP\Exceptions\RadarrClientException;
 use RadarrPHP\Lib\Config;
 use RadarrPHP\Requests\RequestInterface;
 use RadarrPHP\Responses\ResponseInterface;
@@ -17,6 +18,9 @@ class RadarrClient
 	/* @var Client */
 	private $httpClient;
 
+	/* @var RadarrClient */
+	private static $clientInstance = null;
+
 	public function __construct(Config $config)
 	{
 		$this->config = $config;
@@ -27,6 +31,23 @@ class RadarrClient
 				'x-api-key' => $config->getApiKey()
 			]
 		]);
+	}
+
+	public static function init(Config $config): void
+	{
+		self::$clientInstance = new RadarrClient($config);
+	}
+
+	/*
+	 * @throws RadarrClientException
+	 */
+	public static function get(): RadarrClient
+	{
+		if(is_null(self::$clientInstance)) {
+			throw new RadarrClientException('Instance not set.');
+		}
+
+		return self::$clientInstance;
 	}
 
 	public function sendRequest(RequestInterface $request): ResponseInterface
