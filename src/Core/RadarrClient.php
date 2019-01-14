@@ -63,7 +63,6 @@ class RadarrClient
 			return $this->httpClient->request($request->getHTTPMethod(), $request->getRequestUri());
 		} catch (GuzzleException $e) {
 			// TODO Handle GuzzleException
-			echo $e->getMessage();
 		}
 
 		return null;

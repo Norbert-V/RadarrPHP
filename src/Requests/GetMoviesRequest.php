@@ -3,15 +3,15 @@
 namespace RadarrPHP\Requests;
 
 use GuzzleHttp\Psr7\Response;
-use RadarrPHP\Responses\GetProfilesResponse;
+use RadarrPHP\Responses\GetMoviesResponse;
 use RadarrPHP\Responses\ResponseInterface;
 
-class GetProfilesRequest extends GetRequest
+class GetMoviesRequest extends GetRequest
 {
-	protected $requestUri = '/api/profile';
+	protected $requestUri = '/api/movie';
 
 	public function formatResponse(Response $response): ResponseInterface
 	{
-		return new GetProfilesResponse($response);
+		return new GetMoviesResponse($response);
 	}
 }
