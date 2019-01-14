@@ -1,0 +1,18 @@
+{
+    "name": "norbert-v/radarr-php",
+    "description": "PHP library to connect with the Radarr API",
+    "type": "library",
+    "autoload": {
+        "psr-4": {"RadarrPHP\\": "src/"}
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "ext-json": "*"
+    },
+    "authors": [
+        {
+            "name": "Norbert",
+            "email": "norbert.o@outlook.com"
+        }
+    ]
+}
